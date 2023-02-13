@@ -1,5 +1,13 @@
 <p>courses COMPONENT</p>
 <div>
 <app-header></app-header>
-<app-button text="SHOW COURSE"></app-button>
+<app-button [showDeleteIcon]=true></app-button>
+<app-button [showEditIcon]=true></app-button>
+<app-button text='show courses'></app-button>
+<div>
+    <app-info title='Your List Is Empty' text='Please use "Add New Course" button to add your first course'>
+    </app-info>
+    <app-button text='add new courses'></app-button>
+</div>
+<app-course-card></app-course-card>
 </div>

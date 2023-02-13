@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Course } from './coursesType';
 
 @Component({
   selector: 'app-courses',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent {
-
+  @Input() Courses!: Course
+  @Input() Editable!: boolean
+  // @Input() Courses :
 }
