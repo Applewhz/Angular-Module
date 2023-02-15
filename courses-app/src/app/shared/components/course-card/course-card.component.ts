@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CourseCardComponent implements OnInit{
   @Input() Title!: string
   @Input() Description!: string
-  @Input() CreationDate!: Date
+  @Input() CreationDate!: string //will be Date when not using mock data
   @Input() Duration!: number
   @Input() Authors!: string[]
   @Input() editable!: boolean
@@ -34,7 +34,4 @@ export class CourseCardComponent implements OnInit{
   showCourseCard = () => {
     console.log('Show Course')
   }
-  //TODO Date Conversion to DD.MM.YYYY
-  //DONT UNDERSTNAD
-  //Should get button(s) from content projection (<ng-content></ng-content>).
 }
