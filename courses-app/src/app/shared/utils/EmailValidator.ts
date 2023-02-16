@@ -8,6 +8,7 @@ export const createEmailValidation: ValidatorFn = () => {
             return null
         }
 
+        //TODO
         const validEmail = 'something'
 
         return validEmail ? null : {emailValid: 'EMAIL IS NOT VALID'}
