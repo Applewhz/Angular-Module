@@ -1,17 +1,18 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 export const createEmailValidation: ValidatorFn = () => {
-    return (control:AbstractControl): ValidationErrors | null => {
-        const value = control.value
-
-        if(!value){
-            return null
+    return (control: FormControl) => {
+        if (control.value != null && control.value !== '') {
+          let isValid = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test(control.value);
+          if (isValid) {
+            return null;
+          } else {
+            return {
+              emailvalidator: { valid: false }
+            };
+          }
+        } else {
+          return null;
         }
-
-        //TODO
-        const validEmail = 'something'
-
-        return validEmail ? null : {emailValid: 'EMAIL IS NOT VALID'}
     }
-
 }
