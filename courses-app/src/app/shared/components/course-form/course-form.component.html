@@ -1,25 +1,38 @@
 <!-- Replace ::text:: with your code -->
 <h2>Create / Edit Course</h2>
-<form>
+<form  [formGroup]="courseForm" (ngSubmit)="onSubmit(courseCreateEditForm.value)" #courseCreateEditForm="ngForm">
   <div class="app-plate">
     <div class="course">
       <h3>Main Info</h3>
       <div class="form__control">
         <label for="title">Title</label>
         <input
+          class="form__control__input"
           type="text"
           id="title"
           placeholder="Input text"
+          required
+          formControlName="title"
+          [ngClass]="{'is-invalid': show && courseFormControl['title'].invalid && (courseFormControl['title'].dirty || courseFormControl['title'].touched) }" 
         />
+        <span
+            class="invalid-feedback"
+            [hidden]="!show"
+            *ngIf="courseFormControl['title'].invalid && (courseFormControl['title'].dirty || courseFormControl['title'].touched)">
+            Title is required
+          </span>
       </div>
       <div class="form__control">
         <label for="description">Description</label>
         <textarea
+          class="form__control__input"
           id="description"
           name="description"
           placeholder="Input text"
           rows="4"
           cols="5"
+          required
+          formControlName="description"
         ></textarea>
       </div>
       <div class="separator"></div>
@@ -27,11 +40,12 @@
       <div class="form__control">
         <div class="course__flex">
           <input
+            class="form__control__input"
             type="text"
             id="author"
             placeholder="Input Author Name"
           />
-          <app-button></app-button>
+          <app-button text="create author"></app-button>
         </div>
         <div class="course__authors">
           ::Authors::
@@ -42,9 +56,12 @@
       <div class="form__control">
         <div class="course__flex">
           <input
+            class="form__control__input"
             type="number"
             id="duration"
             placeholder="Input duration"
+            required
+            formControlName="duration"
           />
           <div class="course__duration">
             ::Duration::
@@ -52,7 +69,8 @@
         </div>
       </div>
       <div class="form__action">
-        <app-button></app-button>
+        <app-button text="cancel" (btnClick)="onCancel()"></app-button>
+        <app-button text="create course" (btnClick)="show = true ; onSubmit(courseCreateEditForm.value)"></app-button>
       </div>
     </div>
   </div>
