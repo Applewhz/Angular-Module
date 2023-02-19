@@ -15,16 +15,15 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(loginForm: NgForm) {
-    if (loginForm && loginForm.valid) {
-      const userEmail = loginForm.form.value.userEmail;
-      const password = loginForm.form.value.password;
-      alert('Welcome..!!');
-      console.log(userEmail, password);
-    } else {
-      this.errorMessage = 'Please enter a user email and password.';
-    }
-  }
+  // login(loginForm: NgForm) {
+  //   if (loginForm && loginForm.valid) {
+  //     const userEmail = loginForm.form.value.email;
+  //     const password = loginForm.form.value.password;
+  //     console.log(userEmail, password);
+  //   } else {
+  //     this.errorMessage = 'Please enter an email and password.';
+  //   }
+  // }
   
   onSubmit(value:any) {
     // this.submitted = true

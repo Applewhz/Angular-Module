@@ -1,34 +1,66 @@
 <h2 class="text-align-center">Registration</h2>
 <div class="app-plate">
-  <div class="registration-form">
-    <div>
-      <div class="form__control">
-        <label for="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          placeholder="Input text"
-        />
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registrationForm.value)" #registrationForm="ngForm">
+    <div class="registration-form">
+      <div>
+        <div class="form__control">
+          <label for="name">Name</label>
+          <input
+            class="form__control__input"
+            type="text"
+            id="name"
+            placeholder="Input text"
+            required
+            formControlName="name"
+            [ngClass]="{'is-invalid': show && registerFormControl['name'].invalid && (registerFormControl['name'].dirty || registerFormControl['name'].touched) }" 
+          />
+          <span
+            class="invalid-feedback"
+            [hidden]="!show"
+            *ngIf="registerFormControl['name'].invalid && (registerFormControl['name'].dirty || registerFormControl['name'].touched)">
+            Name is required
+          </span>
+        </div>
+        <div class="form__control">
+          <label for="email">Email</label>
+          <input
+            class="form__control__input"
+            type="text"
+            id="email"
+            placeholder="Input text"
+            required
+            formControlName="email"
+            [ngClass]="{'is-invalid': show && registerFormControl['email'].invalid && (registerFormControl['email'].dirty || registerFormControl['email'].touched) }" 
+          />
+          <span
+            class="invalid-feedback"
+            [hidden]="!show"
+            *ngIf="registerFormControl['email'].invalid && (registerFormControl['email'].dirty || registerFormControl['email'].touched)">
+            Email is required
+          </span>
+        </div>
+        <div class="form__control">
+          <label for="password">Password</label>
+          <input
+            class="form__control__input"
+            type="password"
+            id="password"
+            placeholder="Input text"
+            required
+            formControlName="password"
+            [ngClass]="{'is-invalid': show && registerFormControl['password'].invalid && (registerFormControl['password'].dirty || registerFormControl['password'].touched) }" 
+          />
+          <span
+            class="invalid-feedback"
+            [hidden]="!show"
+            *ngIf="registerFormControl['password'].invalid && (registerFormControl['password'].dirty || registerFormControl['password'].touched)">
+            Password is required
+          </span>
+        </div>
       </div>
-      <div class="form__control">
-        <label for="email">Email</label>
-        <input
-          type="text"
-          id="email"
-          placeholder="Input text"
-        />
-      </div>
-      <div class="form__control">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Input text"
-        />
+      <div class="form__action">
+        <app-button text="Login" type="submit" (btnClick)="show = true ; onSubmit(registrationForm.value)"></app-button>
       </div>
     </div>
-    <div class="form__action">
-      <app-button></app-button>
-    </div>
-  </div>
+  </form>
 </div>
