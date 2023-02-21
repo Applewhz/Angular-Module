@@ -1,0 +1,26 @@
+<div class="course-card">
+    <div class="course-card__description">
+      <!-- Replace ::text:: with your code -->
+      <div class="course-card__description-title">{{Title}}</div>
+      <div class="course-card__description-text">{{Description}}</div>
+    </div>
+    <div class="course-card__info">
+        <div class="course-card__info-text">
+            <div>
+              <b>Authors: </b>
+              {{Authors}}
+            </div>
+            <div><b>Duration: </b>
+              {{Duration | durationConverterHours}}<b>:</b>{{Duration | durationConverterMinutes}} 
+              <b *ngIf='(Duration | durationConverterHours) > 1'>hours</b>
+              <b *ngIf='(Duration | durationConverterHours) < 1 || (Duration | durationConverterHours) == 1'>hour</b>
+            </div>
+            <div><b>Created: </b>{{CreationDate}}</div>
+        </div>
+        <div class="course-card__info-actions">
+            <app-button text='show course' (btnClick)='showCourseCard()' ></app-button>
+            <app-button *ngIf='editable === true' [showDeleteIcon]=true (btnClick)="deleteCourseCard()"></app-button>
+            <app-button *ngIf='editable === true' [showEditIcon]=true (btnClick)="editCourseCard()"></app-button>
+        </div>
+    </div>
+</div>
