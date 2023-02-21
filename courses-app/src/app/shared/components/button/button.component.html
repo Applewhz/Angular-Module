@@ -1,6 +1,11 @@
-<div class="app-button" (click)='onClick()'>
+<div *ngIf="!showCancelIcon" class="app-button" (click)='onClick()' >
   <!-- Replace the text below with your code -->
   <fa-icon *ngIf="showDeleteIcon" [icon]='delete'></fa-icon>
   <fa-icon *ngIf="showEditIcon" [icon]='edit'></fa-icon>
+  <!-- <fa-icon *ngIf="showCancelIcon" [icon]='cancel'></fa-icon> -->
   {{text}}
+</div>
+
+<div *ngIf="showCancelIcon" class="app-button-cancel" (click)='onClick()'>
+  <fa-icon [icon]='cancel'></fa-icon>
 </div>

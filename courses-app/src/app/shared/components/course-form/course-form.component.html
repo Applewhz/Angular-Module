@@ -16,11 +16,11 @@
           [ngClass]="{'is-invalid': show && courseFormControl['title'].invalid && (courseFormControl['title'].dirty || courseFormControl['title'].touched) }" 
         />
         <span
-            class="invalid-feedback"
-            [hidden]="!show"
-            *ngIf="courseFormControl['title'].invalid && (courseFormControl['title'].dirty || courseFormControl['title'].touched)">
-            Title is required
-          </span>
+          class="invalid-feedback"
+          [hidden]="!show"
+          *ngIf="courseFormControl['title'].invalid && (courseFormControl['title'].dirty || courseFormControl['title'].touched)">
+          Title is required
+        </span>
       </div>
       <div class="form__control">
         <label for="description">Description</label>
@@ -33,7 +33,14 @@
           cols="5"
           required
           formControlName="description"
+          [ngClass]="{'is-invalid': show && courseFormControl['description'].invalid && (courseFormControl['description'].dirty || courseFormControl['description'].touched) }"
         ></textarea>
+        <span
+          class="invalid-feedback"
+          [hidden]="!show"
+          *ngIf="courseFormControl['description'].invalid && (courseFormControl['description'].dirty || courseFormControl['description'].touched)">
+          Description is required
+        </span>
       </div>
       <div class="separator"></div>
       <h3>Authors</h3>
@@ -47,8 +54,16 @@
           />
           <app-button text="create author"></app-button>
         </div>
+        <p>Author List</p>
         <div class="course__authors">
-          ::Authors::
+          <div *ngFor="let author of courseCreateEditForm.value.authors; let i=index">
+            <div class="course__authors-item">
+              {{ author }}
+              <div class="course__authors-item-cancel">
+                <app-button [showCancelIcon]="true" (btnClick)="onCancelAuthor()"></app-button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="separator"></div>
@@ -62,15 +77,28 @@
             placeholder="Input duration"
             required
             formControlName="duration"
+            [ngClass]="{'is-invalid': show && courseFormControl['duration'].invalid && (courseFormControl['duration'].dirty || courseFormControl['duration'].touched) }"
           />
           <div class="course__duration">
-            ::Duration::
+            {{getHours(courseCreateEditForm.value.duration)}}<b>:</b>{{getMinutes(courseCreateEditForm.value.duration)}} 
+              <b *ngIf='getHours(courseCreateEditForm.value.duration) > 1'>hours</b>
+              <b *ngIf='getHours(courseCreateEditForm.value.duration) < 1 || getHours(courseCreateEditForm.value.duration) == 1'>hour</b>
           </div>
         </div>
+        <span
+          class="invalid-feedback"
+          [hidden]="!show"
+          *ngIf="courseFormControl['duration'].invalid && (courseFormControl['duration'].dirty || courseFormControl['duration'].touched)">
+          Duration is required
+        </span>
       </div>
       <div class="form__action">
-        <app-button text="cancel" (btnClick)="onCancel()"></app-button>
-        <app-button text="create course" (btnClick)="show = true ; onSubmit(courseCreateEditForm.value)"></app-button>
+        <div class="form__action-button">
+          <app-button text="cancel" (btnClick)="onCancel()"></app-button>
+        </div>
+        <div class="form__action-button">
+          <app-button text="create course" (btnClick)="show = true ; onSubmit(courseCreateEditForm.value)"></app-button>
+        </div>
       </div>
     </div>
   </div>

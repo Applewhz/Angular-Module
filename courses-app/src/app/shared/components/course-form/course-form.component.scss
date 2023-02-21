@@ -27,6 +27,12 @@
 
     &-item {
       margin-right: 10px;
+      display: flex;
+      flex-direction: row;
+
+      &-cancel {
+        margin-left: 20px;
+      }
     }
   }
 
@@ -48,4 +54,22 @@
       margin-bottom: 5px;
     }
   }
+
+  &__action {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+
+    &-button {
+      margin-left: 20px;
+    }
+  }
+}
+
+.invalid-feedback {
+  color: red;
+}
+
+.is-invalid {
+  border: red 2px solid;
 }
