@@ -14,6 +14,10 @@ import {
 } from "./components";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { EmailValidatorDirective } from './directive/email-validator.directive';
+import { DurationConverterHoursPipe } from './utils/DurationConverterHours';
+import { DurationConverterMinutesPipe } from './utils/DurationConverterMinutes';
+import { DateConverterPipe } from './utils/DateConverter';
+
 
 const COMPONENTS = [
   HeaderComponent,
@@ -28,13 +32,13 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  declarations: [COMPONENTS, EmailValidatorDirective],
+  declarations: [COMPONENTS, EmailValidatorDirective, DurationConverterHoursPipe, DurationConverterMinutesPipe, DateConverterPipe],
   imports: [
     CommonModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [COMPONENTS]
+  exports: [COMPONENTS, DurationConverterHoursPipe, DurationConverterMinutesPipe, DateConverterPipe]
 })
 export class SharedModule { }

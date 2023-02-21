@@ -80,9 +80,9 @@
             [ngClass]="{'is-invalid': show && courseFormControl['duration'].invalid && (courseFormControl['duration'].dirty || courseFormControl['duration'].touched) }"
           />
           <div class="course__duration">
-            {{getHours(courseCreateEditForm.value.duration)}}<b>:</b>{{getMinutes(courseCreateEditForm.value.duration)}} 
-              <b *ngIf='getHours(courseCreateEditForm.value.duration) > 1'>hours</b>
-              <b *ngIf='getHours(courseCreateEditForm.value.duration) < 1 || getHours(courseCreateEditForm.value.duration) == 1'>hour</b>
+            {{courseCreateEditForm.value.duration | durationConverterHours}}<b>:</b>{{courseCreateEditForm.value.duration | durationConverterMinutes}} 
+              <b *ngIf='(courseCreateEditForm.value.duration | durationConverterHours) > 1'>hours</b>
+              <b *ngIf='(courseCreateEditForm.value.duration | durationConverterHours) < 1 || (courseCreateEditForm.value.duration | durationConverterHours) == 1'>hour</b>
           </div>
         </div>
         <span
