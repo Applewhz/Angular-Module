@@ -23,11 +23,13 @@ export class AuthService {
 
   login(loginData: string) {
     this.sessionStorageService.setToken('TokenKey', loginData)
+    this.isAuthorised = true
     console.log(loginData)
   }
 
   logout() {
     this.sessionStorageService.deleteToken('TokenKey')
+    this.isAuthorised = false
   }
 
   register(userDetails: RegistrationDetails) {
