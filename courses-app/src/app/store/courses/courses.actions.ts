@@ -25,74 +25,74 @@ export const REQUEST_CREATE_COURSE = '[Courses Page] Create Course';
 export const REQUEST_CREATE_COURSE_SUCCESS = '[Courses Page] Get Create Course Success';
 export const REQUEST_CREATE_COURSE_FAILURE = '[Courses Page] Get Create Course Failure';
 
-export const allCourses = createAction(
+export const requestAllCourses = createAction(
   REQUEST_ALL_COURSES,
 );
 
-export const allCoursesSuccess = createAction(
+export const requestAllCoursesSuccess = createAction(
     REQUEST_ALL_COURSES_SUCCESS,
 )
 
-export const allCoursesFailure = createAction(
+export const requestAllCoursesFailure = createAction(
   REQUEST_ALL_COURSES_FAILURE,
 )
 
-export const singleCourse = createAction(
+export const requestSingleCourse = createAction(
     REQUEST_SINGLE_COURSE,
 );
   
-export const singleCourseSuccess = createAction(
+export const requestSingleCourseSuccess = createAction(
     REQUEST_SINGLE_COURSE_SUCCESS,
 )
   
-export const singleCourseFailure = createAction(
+export const requestSingleCourseFailure = createAction(
     REQUEST_SINGLE_COURSE_FAILURE,
 )
 
-export const filteredCourses = createAction(
+export const requestFilteredCourses = createAction(
     REQUEST_FILTERED_COURSES,
 );
   
-export const filteredCoursesSuccess = createAction(
+export const requestFilteredCoursesSuccess = createAction(
     REQUEST_FILTERED_COURSES_SUCCESS,
 )
   
-export const filteredCoursesFailure = createAction(
+export const requestFilteredCoursesFailure = createAction(
     REQUEST_FILTERED_COURSES_FAILURE,
 )
 
-export const deleteCourse = createAction(
+export const requestDeleteCourse = createAction(
     REQUEST_DELETE_COURSE,
 );
   
-export const deleteCourseSuccess = createAction(
+export const requestDeleteCourseSuccess = createAction(
     REQUEST_DELETE_COURSE_SUCCESS,
 )
   
-export const deleteCourseFailure = createAction(
+export const requestDeleteCourseFailure = createAction(
     REQUEST_DELETE_COURSE_FAILURE,
 )
 
-export const editCourse = createAction(
+export const requestEditCourse = createAction(
     REQUEST_EDIT_COURSE,
 );
   
-export const editCourseSuccess = createAction(
+export const requestEditCourseSuccess = createAction(
     REQUEST_EDIT_COURSE_SUCCESS,
 )
   
-export const editCourseFailure = createAction(
+export const requestEditCourseFailure = createAction(
     REQUEST_EDIT_COURSE_FAILURE,
 )
 
-export const createCourse = createAction(
+export const requestCreateCourse = createAction(
     REQUEST_CREATE_COURSE,
 );
   
-export const createCourseSuccess = createAction(
+export const requestCreateCourseSuccess = createAction(
     REQUEST_CREATE_COURSE_SUCCESS,
 )
   
-export const createCourseFailure = createAction(
+export const requestCreateCourseFailure = createAction(
     REQUEST_CREATE_COURSE_FAILURE,
 )
