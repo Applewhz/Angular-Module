@@ -1,0 +1,59 @@
+<h2 class="text-align-center">Login</h2>
+<div class="app-plate">
+  <form (ngSubmit)="onSubmit(loginForm.value)" #loginForm="ngForm">
+    <div class="login-form">
+      <div>
+        <div class="form__control">
+          <label class="input_label" for="email">Email</label>
+          <input
+            class="form__control__input"
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Input Text"
+            required 
+            ngModel
+            appEmailValidator
+            #emailVar="ngModel"
+            [ngClass]="{'is-invalid': (emailVar.touched || emailVar.dirty) && !emailVar.valid }" 
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="emailVar.hasError('required')">
+              User email is required.
+            </span>
+            <span *ngIf="emailVar.hasError('emailvalidator')">
+              Please provide a valid email address
+            </span>
+          </span>
+        </div>
+        <div class="form__control">
+          <label class="input_label" for="password">Password</label>
+          <input
+            class="form__control__input"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Input Text"
+            required
+            ngModel
+            #passwordVar="ngModel"
+            [ngClass]="{'is-invalid': (passwordVar.touched || passwordVar.dirty) && !passwordVar.valid }"
+            />
+          <span class="invalid-feedback">
+            <span *ngIf="passwordVar.hasError('required')">
+              Password is required.
+            </span>
+          </span>
+        </div>
+      </div>
+      <div>
+        <div class="login_button">
+          <app-button text="Login" type="submit" (btnClick)="onSubmit(loginForm.value)"></app-button>
+        </div>
+        <div class="form__text">
+          If you don't have an account you may <strong>Registration</strong>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

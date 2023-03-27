@@ -1,0 +1,105 @@
+<!-- Replace ::text:: with your code -->
+<h2>Create / Edit Course</h2>
+<form  [formGroup]="courseForm" (ngSubmit)="onSubmit(courseCreateEditForm.value)" #courseCreateEditForm="ngForm">
+  <div class="app-plate">
+    <div class="course">
+      <h3>Main Info</h3>
+      <div class="form__control">
+        <label for="title">Title</label>
+        <input
+          class="form__control__input"
+          type="text"
+          id="title"
+          placeholder="Input text"
+          required
+          formControlName="title"
+          [ngClass]="{'is-invalid': show && courseFormControl['title'].invalid && (courseFormControl['title'].dirty || courseFormControl['title'].touched) }" 
+        />
+        <span
+          class="invalid-feedback"
+          [hidden]="!show"
+          *ngIf="courseFormControl['title'].invalid && (courseFormControl['title'].dirty || courseFormControl['title'].touched)">
+          Title is required
+        </span>
+      </div>
+      <div class="form__control">
+        <label for="description">Description</label>
+        <textarea
+          class="form__control__input"
+          id="description"
+          name="description"
+          placeholder="Input text"
+          rows="4"
+          cols="5"
+          required
+          formControlName="description"
+          [ngClass]="{'is-invalid': show && courseFormControl['description'].invalid && (courseFormControl['description'].dirty || courseFormControl['description'].touched) }"
+        ></textarea>
+        <span
+          class="invalid-feedback"
+          [hidden]="!show"
+          *ngIf="courseFormControl['description'].invalid && (courseFormControl['description'].dirty || courseFormControl['description'].touched)">
+          Description is required
+        </span>
+      </div>
+      <div class="separator"></div>
+      <h3>Authors</h3>
+      <div class="form__control">
+        <div class="course__flex">
+          <input
+            class="form__control__input"
+            type="text"
+            id="author"
+            placeholder="Input Author Name"
+          />
+          <app-button text="create author"></app-button>
+        </div>
+        <p>Author List</p>
+        <div class="course__authors">
+          <div *ngFor="let author of courseCreateEditForm.value.authors; let i=index">
+            <div class="course__authors-item">
+              {{ author }}
+              <div class="course__authors-item-cancel">
+                <app-button [showCancelIcon]="true" (btnClick)="onCancelAuthor()"></app-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="separator"></div>
+      <h3>Duration</h3>
+      <div class="form__control">
+        <div class="course__flex">
+          <input
+            class="form__control__input"
+            type="number"
+            id="duration"
+            placeholder="Input duration"
+            required
+            formControlName="duration"
+            [ngClass]="{'is-invalid': show && courseFormControl['duration'].invalid && (courseFormControl['duration'].dirty || courseFormControl['duration'].touched) }"
+          />
+          <div class="course__duration">
+            {{courseCreateEditForm.value.duration | durationConverterHours}}<b>:</b>{{courseCreateEditForm.value.duration | durationConverterMinutes}} 
+              <b *ngIf='(courseCreateEditForm.value.duration | durationConverterHours) > 1'>hours</b>
+              <b *ngIf='(courseCreateEditForm.value.duration | durationConverterHours) < 1 || (courseCreateEditForm.value.duration | durationConverterHours) == 1'>hour</b>
+          </div>
+        </div>
+        <span
+          class="invalid-feedback"
+          [hidden]="!show"
+          *ngIf="courseFormControl['duration'].invalid && (courseFormControl['duration'].dirty || courseFormControl['duration'].touched)">
+          Duration is required
+        </span>
+      </div>
+      <div class="form__action">
+        <div class="form__action-button">
+          <app-button text="cancel" (btnClick)="onCancel()"></app-button>
+        </div>
+        <div class="form__action-button">
+          <app-button text="create course" (btnClick)="show = true ; onSubmit(courseCreateEditForm.value)"></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
